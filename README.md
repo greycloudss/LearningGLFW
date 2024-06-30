@@ -1,1 +1,1 @@
-# LearningGLFW
+# Learning OpenGL
