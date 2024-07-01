@@ -1,36 +1,24 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <iostream>
 #include "graphics.hpp"
 #include "inputs.hpp"
 
 
 int main() {
-    if (!glfwInit()) {
-        std::cerr << "row row raggy rits a rash!";
+    GLFWwindow* window = initialize();
+    if (!window) {
         return -1;
     }
 
-    GLFWmonitor* prm_mon = glfwGetPrimaryMonitor();
+    double xpos, ypos;
+    while (!glfwWindowShouldClose(window)) {
+        esc_event(window);
 
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    glfwWindowHint(GLFW_FOCUSED , GLFW_TRUE);
-    glfwWindowHint(GLFW_VISIBLE , GLFW_TRUE);
+        glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+        glfwGetCursorPos(window, &xpos, &ypos);
+        
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "I really really hope this doesnt break", NULL, NULL);
-    glfwMakeContextCurrent(window);
-    gladLoadGL();
-
-    glfwSetKeyCallback(window, key_callback);
-
-    while (glfwWindowShouldClose(window) == GLFW_FALSE) {
-        int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
-        glViewport(0, 0, width, height);
-
+        glClear(GL_COLOR_BUFFER_BIT);
+    
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
