@@ -26,6 +26,7 @@ void esc_checker(GLFWwindow* window) {
 }
 
 
+
 void esc_event(GLFWwindow* window) {
     drawRectangle();
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)

@@ -129,3 +129,4 @@ GLFWwindow* initialize() {
 
     return window;
 }
+
